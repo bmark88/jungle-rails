@@ -1,9 +1,9 @@
+<% if enhanced_cart.product.first %>
 <section class="cart-show">
 
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -31,6 +31,7 @@
       </tfoot>
     </table>
   </div>
+  
 
   <div class="row">
     <div class="col-xs-12">
@@ -50,3 +51,7 @@
   </div>
 
 </section>
+<% else %>
+  <div style="font-size: 50px;">Your cart is empty.</div>
+  <div style="font-size: 25px;">Click <%= link_to 'Home', :root %> to add some items to your cart!</div>
+<% end %>
