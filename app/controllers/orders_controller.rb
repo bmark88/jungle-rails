@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  before_filter :authorize
+
   def show
     @order = Order.find(params[:id])
     @products = @order.line_items.map {|line_item| Product.find(line_item.product_id)}
