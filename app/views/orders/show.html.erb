@@ -2,54 +2,99 @@
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
     <div>
-      <% @order.line_items.each do |item| %>
-        <p>
-          <strong>
-          Line item:
-          </strong> 
-          <%= item.id %> (Product No. <%= item.product_id %>)
-        </p>
-        <p>
-          <strong>
-            Quantity Ordered:
-          </strong> 
-          <%= item.quantity %>
-        </p>
-        <p>
-          <strong>
-            Line item total:
-          </strong> 
-          <%= humanized_money_with_symbol item.total_price %> 
-        </p>
-        <p>
-          <strong>
-            Individual line item price:
-          </strong> 
-          <%= humanized_money_with_symbol item.item_price %>
-        </p>
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      <% end %>
-      <div class="order-total">
-        <p>
+      <div 
+        style="
+          display: flex; 
+          flex-direction: row; 
+          flex-grow: 3; 
+          flex-wrap: wrap;
+        "
+      >
+        <% @order.line_items.each do |item| %>
+          <div 
+            style="
+              background-color: black; 
+              color: white; 
+              padding: 5px; 
+              margin: 5px; 
+              display: flex; 
+              flex-wrap: wrap; 
+              width: 250px; 
+              height: 150px;
+            "
+          >
+            <p>
+              <strong>
+              Line item:
+              </strong> 
+              <%= item.id %> (Product No. <%= item.product_id %>)
+            </p>
+            <p>
+              <strong>
+                Quantity Ordered:
+              </strong> 
+              <%= item.quantity %>
+            </p>
+            <p>
+              <strong>
+                Line item total:
+              </strong> 
+              <%= humanized_money_with_symbol item.total_price %> 
+            </p>
+            <p>
+              <strong>
+                Individual line item price:
+              </strong> 
+              <%= humanized_money_with_symbol item.item_price %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <div 
+        style="
+          background-color: red; 
+          padding: 10px; 
+          opacity: 80%; 
+          margin: 1.5em 0
+        "
+      >
+        <p style="margin: 0">
           <strong>
             Your total:
           </strong> 
           <%= humanized_money_with_symbol @order.total  %>
         </p>
-        <p>
+        <p style="margin: 0">
           You will be notified at 
           <strong>
             <%= @order.email %>
           </strong> 
           when your order has shipped. 
         </p>
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       </div>
       <p style="font-size: 30px;">Check out what you ordered below:</p>
+      <div 
+        style="
+          display: flex; 
+          flex-direction: row; 
+          flex-wrap: wrap; 
+          border: solid; 
+          padding: 2em
+        "
+      >
       <% @products.each do |item| %>
-        <p><strong><%= item.name %>:</strong> <%= item.description %></p>
-        <img src=<%= item.image %>/>
+        <div>
+          <strong>
+            <%= item.name %>:
+          </strong> 
+          <%= item.description %>
+        </div>
+        <img 
+          src=<%= item.image %> 
+          style="max-width: 200px; margin: 0 auto"
+        />
       <% end %>  
+      </div>
     </div>
   </header>
   <div class="order-summary jumbotron">
