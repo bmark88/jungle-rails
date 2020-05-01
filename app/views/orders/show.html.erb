@@ -2,27 +2,9 @@
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
     <div>
-      <div 
-        style="
-          display: flex; 
-          flex-direction: row; 
-          flex-grow: 3; 
-          flex-wrap: wrap;
-        "
-      >
+      <div class="order-item-container">
         <% @order.line_items.each do |item| %>
-          <div 
-            style="
-              background-color: black; 
-              color: white; 
-              padding: 5px; 
-              margin: 5px; 
-              display: flex; 
-              flex-wrap: wrap; 
-              width: 250px; 
-              height: 150px;
-            "
-          >
+          <div class="order-item">
             <p>
               <strong>
               Line item:
@@ -56,21 +38,14 @@
           </div>
         <% end %>
       </div>
-      <div 
-        style="
-          background-color: red; 
-          padding: 10px; 
-          opacity: 80%; 
-          margin: 1.5em 0
-        "
-      >
-        <p style="margin: 0">
+      <div class="order-total">
+        <p>
           <strong>
             Your total:
           </strong> 
           <%= humanized_money_with_symbol @order.total  %>
         </p>
-        <p style="margin: 0">
+        <p>
           You will be notified at 
           <strong>
             <%= @order.email %>
@@ -78,16 +53,8 @@
           when your order has shipped. 
         </p>
       </div>
-      <p style="font-size: 30px;">Check out what you ordered below:</p>
-      <div 
-        style="
-          display: flex; 
-          flex-direction: row; 
-          flex-wrap: wrap; 
-          border: solid; 
-          padding: 2em
-        "
-      >
+      <p class="order-item-message">Check out what you ordered below:</p>
+      <div class="order-image-container">
       <% @products.each do |item| %>
         <div>
           <strong>
@@ -97,7 +64,7 @@
         </div>
         <img 
           src=<%= item.image %> 
-          style="max-width: 200px; margin: 0 auto"
+          class="order-item-image"
         />
       <% end %>  
       </div>
