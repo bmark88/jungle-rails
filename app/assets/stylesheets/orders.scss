@@ -1,0 +1,45 @@
+.order-item-container {
+  display: flex; 
+  flex-direction: row; 
+  flex-grow: 3; 
+  flex-wrap: wrap;
+}
+
+.order-item {
+  background-color: black; 
+  color: white; 
+  padding: 5px; 
+  margin: 5px; 
+  display: flex; 
+  flex-wrap: wrap; 
+  width: 250px; 
+  height: 150px;
+}
+
+.order-total {
+  background-color: red; 
+  padding: 10px; 
+  opacity: 80%; 
+  margin: 1.5em 0;
+}
+
+.order-total p {
+  margin: 0;
+}
+
+.order-item-message {
+  font-size: 30px;
+}
+
+.order-image-container {
+  display: flex; 
+  flex-direction: row; 
+  flex-wrap: wrap; 
+  border: solid; 
+  padding: 2em;
+}
+
+.order-item-image {
+  max-width: 200px; 
+  margin: 0 auto;
+}
